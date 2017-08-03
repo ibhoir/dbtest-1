@@ -39,6 +39,7 @@ public class HomeController {
 		String url = "jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = dukeortv97.corp.cox.com)(PORT = 1521)) (CONNECT_DATA = (SERVER =DEDICATED) (SERVICE_NAME = DTELOPS.WORLD)))";
 		*/User user = new User();
 		System.out.println("====>>>>>>dev_app_db_username Env ======="+System.getProperty("dev_app_db_username"));
+		System.out.println("====>>>>>>JWS_ADMIN_PASSWORD Env ======="+System.getProperty("JWS_ADMIN_PASSWORD"));
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			System.out.println("Here");
