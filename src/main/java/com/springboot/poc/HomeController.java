@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,15 @@ import com.springboot.poc.model.User;
 @RestController
 public class HomeController {
 
+	@Value("${dev.app.db.username}")
+	private String username;
+	
+	@Value("${dev.app.db.password}")
+	private String password;
+	
+	@Value("${dev.app.db.url}")
+	private String url; 
+	
 	@RequestMapping("/")
 	public String index() {
 		return "Welcome to DB test";
@@ -24,10 +34,10 @@ public class HomeController {
 
 	@RequestMapping(method = RequestMethod.GET, value="/getData/{id}")
 	public User getData(@PathVariable("id") String id) {
-		String username = "TOSS_DLMS";
+		/*String username = "TOSS_DLMS";
 		String password = "toss_dlms";
 		String url = "jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = dukeortv97.corp.cox.com)(PORT = 1521)) (CONNECT_DATA = (SERVER =DEDICATED) (SERVICE_NAME = DTELOPS.WORLD)))";
-		User user = new User();
+		*/User user = new User();
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			System.out.println("Here");
