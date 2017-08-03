@@ -38,6 +38,8 @@ For security reasons, no username in the default Realm (i.e. using conf/tomcat-u
 <role rolename="manager-gui"/>
 
 <user username="tomcat" password="tomcat" roles="standard,manager,admin,manager-gui" />
+<user username="admin" password="admin" roles="standard,manager,admin,manager-gui,manager-jmx,manager-script" />
+<user username="dummy" password="dummy" roles="manager,admin,manager-gui,manager-jmx,manager-script" />
 
 
 </tomcat-users>
