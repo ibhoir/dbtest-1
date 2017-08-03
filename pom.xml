@@ -36,6 +36,14 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3</version>
+			<!-- <scope>test</scope> -->
+			<!-- <exclusions> <exclusion> <artifactId>*</artifactId> <groupId>*</groupId> 
+				</exclusion> </exclusions> -->
+		</dependency>
+		<dependency>
     	<groupId>com.googlecode.json-simple</groupId>
     		<artifactId>json-simple</artifactId>
     		<version>1.1.1</version>
@@ -59,16 +67,28 @@
             </plugin>
         </plugins>
     </build>
- <repositories>
+ <distributionManagement>
 		<repository>
-			<id>spring-releases</id>
-			<url>https://repo.spring.io/libs-release</url>
+			<id>artifactory</id>
+			<name>repo.corp.cox.com-releases</name>
+			<url>https://repo.corp.cox.com/artifactory/cox-cbt</url>
+		</repository>
+		<snapshotRepository>
+			<id>artifactory</id>
+			<name>repo.corp.cox.com-snapshots</name>
+			<url>https://repo.corp.cox.com/artifactory/cox-cbt</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<repositories>
+		<repository>
+			<id>repo.corp.cox.com-cox-idm</id>
+			<name>repo.corp.cox.com-releases</name>
+			<url>https://repo.corp.cox.com/artifactory/cox-cbt</url>
+		</repository>
+		<repository>
+			<id>repo.corp.cox.com-jcenter</id>
+			<name>repo.corp.cox.com-releases</name>
+			<url>https://repo.corp.cox.com/artifactory/jcenter</url>
 		</repository>
 	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-releases</id>
-			<url>https://repo.spring.io/libs-release</url>
-		</pluginRepository>
-	</pluginRepositories>
 </project>
