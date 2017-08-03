@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.poc.model.User;
 
-
+import java.sql.*;
+import javax.naming.*;
+import javax.sql.*;
 
 @RestController
 public class HomeController {
@@ -61,5 +63,35 @@ public class HomeController {
 		}
 
 		return user;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value="/getjndicon")
+	public String getJNDIConnection (@PathVariable("id") String id) {
+
+		  /** Uses JNDI and Datasource (preferred style).   */
+		    String DATASOURCE_CONTEXT = "java:DapsDS";
+		    
+		    Connection result = null;
+		    try {
+		      Context initialContext = new InitialContext();
+		      if ( initialContext == null){
+		    	  System.out.println("JNDI problem. Cannot get InitialContext.");
+		      }
+		      DataSource datasource = (DataSource)initialContext.lookup(DATASOURCE_CONTEXT);
+		      if (datasource != null) {
+		        result = datasource.getConnection();
+		      }
+		      else {
+		    	  System.out.println("Failed to lookup datasource.");
+		      }
+		    }
+		    catch ( NamingException ex ) {
+		    	System.out.println("Cannot get connection: " + ex);
+		    }
+		    catch(SQLException ex){
+		    	System.out.println("Cannot get connection: " + ex);
+		    }
+		    return "Connecting to JNDI Lookup";
+		  
 	}
 }
